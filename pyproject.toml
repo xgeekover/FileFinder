@@ -1,0 +1,135 @@
+[build-system]
+requires = ["setuptools>=68.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "filefinder"
+version = "1.0.0"
+description = "Cross-Platform File Content Search Tool"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [
+    { name = "FileFinder Contributors" },
+]
+keywords = ["search", "file-search", "pyside6", "regex", "desktop"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: MacOS X",
+    "Environment :: Win32 (MS Windows)",
+    "Environment :: X11 Applications :: Qt",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Desktop Environment :: File Managers",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "PySide6>=6.6.0,<7.0.0",
+    "charset-normalizer>=3.3.0,<4.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0,<9.0.0",
+    "pytest-qt>=4.4.0,<5.0.0",
+    "ruff>=0.4.0",
+    "mypy>=1.9.0",
+    "pyright>=1.1.350",
+    "pyinstaller>=6.5.0",
+]
+
+[project.scripts]
+filefinder = "app.main:main"
+
+[project.gui-scripts]
+filefinder-gui = "app.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+src = [".", "app", "tests"]
+exclude = [
+    ".git",
+    ".venv",
+    "build",
+    "dist",
+    "__pycache__",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # Pyflakes
+    "I",      # isort (import sorting)
+    "B",      # flake8-bugbear (common bug patterns)
+    "UP",     # pyupgrade (modern Python 3.13 syntax)
+    "SIM",    # flake8-simplify (code simplification)
+    "C4",     # flake8-comprehensions
+    "RUF",    # Ruff-specific lint rules
+]
+ignore = [
+    "E501",   # Line length handled by formatter / soft limit
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+[tool.mypy]
+python_version = "3.13"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = false
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+show_error_codes = true
+
+[[tool.mypy.overrides]]
+module = [
+    "PySide6.*",
+    "charset_normalizer.*",
+]
+ignore_missing_imports = true
+
+[tool.pyright]
+include = ["app", "tests"]
+exclude = ["**/__pycache__", ".venv", "build", "dist"]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.13"
+pythonPlatform = "All"
+typeCheckingMode = "standard"
+reportMissingImports = true
+reportMissingTypeStubs = false
+reportUnusedImport = true
+reportUnusedVariable = true
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --strict-markers"
+qt_api = "pyside6"

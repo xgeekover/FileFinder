@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background squircle gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+
+    <!-- Document page gradient -->
+    <linearGradient id="docGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+
+    <!-- Document fold gradient -->
+    <linearGradient id="foldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+
+    <!-- Magnifying glass rim gradient -->
+    <linearGradient id="rimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="40%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+
+    <!-- Glass lens radial gradient -->
+    <radialGradient id="lensGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45"/>
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0.30"/>
+    </radialGradient>
+
+    <!-- Handle gradient -->
+    <linearGradient id="handleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#64748b"/>
+      <stop offset="25%" stop-color="#334155"/>
+      <stop offset="70%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- Drop shadow filters -->
+    <filter id="shadowDoc" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+
+    <filter id="shadowGlass" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="4" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <!-- Highlight line gradient -->
+    <linearGradient id="matchLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+
+  <!-- App icon container / squircle plate -->
+  <rect x="24" y="24" width="464" height="464" rx="104" fill="url(#bgGrad)" stroke="#334155" stroke-width="3"/>
+
+  <!-- Subtle ambient inner glow border -->
+  <rect x="26" y="26" width="460" height="460" rx="102" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.12"/>
+
+  <!-- Document element with drop shadow -->
+  <g filter="url(#shadowDoc)">
+    <!-- Document page with cut corner for fold -->
+    <path d="M 116 100
+             L 250 100
+             L 310 160
+             L 310 364
+             A 16 16 0 0 1 294 380
+             L 116 380
+             A 16 16 0 0 1 100 364
+             L 100 116
+             A 16 16 0 0 1 116 100 Z"
+          fill="url(#docGrad)"/>
+
+    <!-- Document fold flap -->
+    <path d="M 250 100
+             L 250 148
+             A 12 12 0 0 0 262 160
+             L 310 160 Z"
+          fill="url(#foldGrad)"/>
+
+    <!-- Document code/text lines -->
+    <!-- Line 1: Header / Title -->
+    <rect x="126" y="130" width="95" height="10" rx="5" fill="#3b82f6" fill-opacity="0.8"/>
+
+    <!-- Line 2 -->
+    <rect x="126" y="160" width="105" height="7" rx="3.5" fill="#94a3b8" fill-opacity="0.7"/>
+
+    <!-- Line 3 -->
+    <rect x="126" y="185" width="145" height="7" rx="3.5" fill="#cbd5e1"/>
+
+    <!-- Line 4 -->
+    <rect x="126" y="210" width="125" height="7" rx="3.5" fill="#cbd5e1"/>
+
+    <!-- Line 5: Matched content highlight line -->
+    <rect x="126" y="235" width="150" height="9" rx="4.5" fill="url(#matchLineGrad)"/>
+
+    <!-- Line 6 -->
+    <rect x="126" y="265" width="135" height="7" rx="3.5" fill="#cbd5e1"/>
+
+    <!-- Line 7 -->
+    <rect x="126" y="290" width="115" height="7" rx="3.5" fill="#cbd5e1"/>
+
+    <!-- Line 8 -->
+    <rect x="126" y="315" width="140" height="7" rx="3.5" fill="#cbd5e1"/>
+
+    <!-- Line 9 -->
+    <rect x="126" y="340" width="90" height="7" rx="3.5" fill="#cbd5e1"/>
+  </g>
+
+  <!-- Magnifying Glass with drop shadow -->
+  <g filter="url(#shadowGlass)">
+    <!-- Handle extending at 45-degree angle -->
+    <!-- Metallic collar -->
+    <line x1="344" y1="324" x2="368" y2="348" stroke="#94a3b8" stroke-width="22" stroke-linecap="round"/>
+
+    <!-- Ergonomic handle grip -->
+    <line x1="365" y1="345" x2="435" y2="415" stroke="url(#handleGrad)" stroke-width="26" stroke-linecap="round"/>
+
+    <!-- Handle grip highlight edge -->
+    <line x1="361" y1="341" x2="427" y2="407" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Magnifying Glass Lens Outer Bezel -->
+    <circle cx="295" cy="275" r="76" fill="none" stroke="url(#rimGrad)" stroke-width="16"/>
+
+    <!-- Inner bezel border -->
+    <circle cx="295" cy="275" r="68" fill="none" stroke="#60a5fa" stroke-width="2" stroke-opacity="0.6"/>
+
+    <!-- Translucent Lens Glass Fill -->
+    <circle cx="295" cy="275" r="67" fill="url(#lensGrad)"/>
+
+    <!-- Magnified Content Under Lens -->
+    <rect x="245" y="268" width="85" height="14" rx="7" fill="#fbbf24"/>
+    <rect x="250" y="250" width="60" height="8" rx="4" fill="#38bdf8"/>
+    <rect x="255" y="292" width="70" height="8" rx="4" fill="#e2e8f0"/>
+
+    <!-- Specular light glare / reflection arcs -->
+    <path d="M 245 240 A 55 55 0 0 1 330 240" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-opacity="0.65"/>
+    <path d="M 255 230 A 60 60 0 0 1 310 225" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.4"/>
+  </g>
+</svg>
