@@ -22,15 +22,12 @@ jobs:
         include:
           - os: macos-latest
             artifact_name: FileFinder-macOS
-            archive_cmd: cd dist && zip -r ../FileFinder-macOS.zip FileFinder.app
             archive_file: FileFinder-macOS.zip
           - os: windows-latest
             artifact_name: FileFinder-Windows
-            archive_cmd: Compress-Archive -Path dist\FileFinder -DestinationPath FileFinder-Windows.zip
             archive_file: FileFinder-Windows.zip
           - os: ubuntu-latest
             artifact_name: FileFinder-Linux
-            archive_cmd: cd dist && tar czf ../FileFinder-Linux.tar.gz FileFinder
             archive_file: FileFinder-Linux.tar.gz
 
     steps:
@@ -98,9 +95,18 @@ jobs:
         if: runner.os == 'Windows'
         run: .\dist\FileFinder\FileFinder.exe --version
 
-      - name: Create archive
-        run: ${{ matrix.archive_cmd }}
-        shell: ${{ runner.os == 'Windows' && 'pwsh' || 'bash' }}
+      - name: Create archive (macOS)
+        if: runner.os == 'macOS'
+        run: cd dist && zip -r ../FileFinder-macOS.zip FileFinder.app
+
+      - name: Create archive (Linux)
+        if: runner.os == 'Linux'
+        run: cd dist && tar czf ../FileFinder-Linux.tar.gz FileFinder
+
+      - name: Create archive (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: Compress-Archive -Path dist\FileFinder -DestinationPath FileFinder-Windows.zip
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
