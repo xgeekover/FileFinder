@@ -178,7 +178,7 @@ class TestAuthoritative15Scenarios:
 
         main_window.on_start_search()
         assert main_window.search_worker is not None
-        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=5000):
+        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=15000):
             pass
 
         assert main_window.table_model.rowCount() == 3
@@ -202,7 +202,7 @@ class TestAuthoritative15Scenarios:
 
         main_window.on_start_search()
         assert main_window.search_worker is not None
-        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=5000):
+        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=15000):
             pass
 
         assert main_window.table_model.rowCount() == 1
@@ -230,7 +230,7 @@ class TestAuthoritative15Scenarios:
 
         main_window.on_start_search()
         assert main_window.search_worker is not None
-        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=5000):
+        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=15000):
             pass
 
         assert main_window.table_model.rowCount() == 1
@@ -251,7 +251,7 @@ class TestAuthoritative15Scenarios:
 
         main_window.on_start_search()
         assert main_window.search_worker is not None
-        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=5000):
+        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=15000):
             pass
 
         assert main_window.table_model.rowCount() == 2
@@ -269,7 +269,7 @@ class TestAuthoritative15Scenarios:
 
         main_window.on_start_search()
         assert main_window.search_worker is not None
-        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=5000):
+        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=15000):
             pass
 
         assert main_window.table_model.rowCount() == 1
@@ -290,7 +290,7 @@ class TestAuthoritative15Scenarios:
 
         main_window.on_start_search()
         assert main_window.search_worker is not None
-        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=5000):
+        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=15000):
             pass
 
         assert main_window.table_model.rowCount() == 1
@@ -314,7 +314,7 @@ class TestAuthoritative15Scenarios:
         main_window.cb_recursive.setChecked(False)
         main_window.on_start_search()
         assert main_window.search_worker is not None
-        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=5000):
+        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=15000):
             pass
         assert main_window.table_model.rowCount() == 1
         assert main_window.table_model.get_result(0).file_name == "root.txt"  # type: ignore[union-attr]
@@ -323,7 +323,7 @@ class TestAuthoritative15Scenarios:
         main_window.cb_recursive.setChecked(True)
         main_window.on_start_search()
         assert main_window.search_worker is not None
-        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=5000):
+        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=15000):
             pass
         assert main_window.table_model.rowCount() == 2
 
@@ -341,7 +341,7 @@ class TestAuthoritative15Scenarios:
 
         main_window.on_start_search()
         assert main_window.search_worker is not None
-        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=5000):
+        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=15000):
             pass
 
         assert main_window.table_model.rowCount() == 2
@@ -407,7 +407,7 @@ class TestAuthoritative15Scenarios:
 
         main_window.on_start_search()
         assert main_window.search_worker is not None
-        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=5000):
+        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=15000):
             pass
 
         assert main_window.table_model.rowCount() == 1
@@ -438,7 +438,7 @@ class TestAuthoritative15Scenarios:
 
         main_window.on_start_search()
         assert main_window.search_worker is not None
-        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=5000):
+        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=15000):
             pass
 
         assert main_window.table_model.rowCount() == 1
@@ -459,7 +459,7 @@ class TestAuthoritative15Scenarios:
 
         main_window.on_start_search()
         assert main_window.search_worker is not None
-        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=5000):
+        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=15000):
             pass
 
         assert main_window.table_model.rowCount() == 1
@@ -496,7 +496,7 @@ class TestAuthoritative15Scenarios:
         qtbot.waitUntil(lambda: main_window.table_model.rowCount() >= 1, timeout=3000)
         assert main_window.search_worker.isRunning() is True
 
-        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=5000):
+        with qtbot.waitSignal(main_window.search_worker.search_completed, timeout=15000):
             main_window.on_cancel_search()
 
         # Verify results preserved

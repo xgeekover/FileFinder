@@ -11,6 +11,7 @@ Empirical verification suite for Milestone 2:
 from __future__ import annotations
 
 import contextlib
+import sys
 import threading
 import time
 import tracemalloc
@@ -431,6 +432,7 @@ class TestChallengerAdversarialEdgeCases:
         # Total files = successes + errors
         assert stats.success_count + stats.error_count == stats.total_files
 
+    @pytest.mark.skipif(sys.platform == "win32", reason="chmod 000 does not block read on Windows")
     def test_unreadable_file_permission_error_gracefully_handled(self, tmp_path: Path) -> None:
         """Adversarial test: File with 000 permissions is trapped and recorded in error list."""
         unreadable = tmp_path / "no_access.txt"
