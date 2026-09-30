@@ -318,9 +318,12 @@ class MainWindow(QMainWindow):
         self.setAcceptDrops(True)
 
         # Set application icon if available
-        icon_path = Path(__file__).resolve().parent.parent.parent / "resources" / "icons" / "icon_64x64.png"
-        if icon_path.exists():
-            self.setWindowIcon(QIcon(str(icon_path)))
+        icons_dir = Path(__file__).resolve().parent.parent.parent / "resources" / "icons"
+        for icon_name in ("app_icon_64.png", "app_icon.png", "app_icon_256.png"):
+            icon_path = icons_dir / icon_name
+            if icon_path.exists():
+                self.setWindowIcon(QIcon(str(icon_path)))
+                break
 
         self._settings = QSettings("FileFinder", "FileFinder")
         self._search_worker: SearchWorker | None = None
